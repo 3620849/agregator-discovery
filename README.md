@@ -1,11 +1,42 @@
 # Documentation
 SERVER LOCATION Francfurt http://18.156.3.210:8081
 ## USER AUTHORIZATION
+
+All endpoinds separated on two types public and secured
+
+Secured endpoints contain in path **"/s"** and require token in header
+
+**Example:**
+
+          [GET] /api/s/ka
+          
+Public endpoints contain in path **"p"** and do not require any headers
+
+**Example:**
+
+          [GET] /api/p/user/{userId}
+          
+To access secured endpoints client need use headers like:
+
+Dis-Oauth-Token **for Oauth 2.0 authorization Disqus**
+
+Ggl-Oauth-Token **for Oauth 2.0 authorization Google**
+
+Fb-Oauth-Token **for Oauth 2.0 authorization Facebook**
+
+Vk-Oauth-Token **for Oauth 2.0 authorization Vkontakte**
+
+Git-Hub-Oauth-Toke **for Oauth 2.0 authorization GITHUB**
+
+X-Auth-Token **for token base authorization**
+
+Authorization **for token base authorization**
+
 **There is several type of authorization:**
 
 ## Token base Authorization
 
-- User send in header **Authorization** login and password in base64 format at any secured url (which starts like /api/s...)
+- User send request with header **Authorization** which contains login and password in base64 format at any secured url (which starts like /api/s...)
 credentials shoul be in format **Basic login:password**
 
 **Example:**
@@ -54,7 +85,7 @@ return plain/text **true**
   "photo": string
   
 }
-## [GET] /p/user/{userId}
+## [GET] /api/p/user/{userId}
 **to get user by id**
 
 **produce :**
