@@ -16,7 +16,7 @@ Public endpoints contain in path **"p"** and do not require any headers
 
           [GET] /api/p/user/{userId}
           
-To access secured endpoints client need use headers like:
+To access secured endpoints client need use headers like ( headers in priority order):
 
 Dis-Oauth-Token **for Oauth 2.0 authorization Disqus**
 
@@ -48,10 +48,46 @@ credentials shoul be in format **Basic login:password**
 - Response will contain **X-Auth-Token** which client should save per user and send each request to identify user.
 Once user want logout token can be deleted
 
-Every secure endpoint require token to identify user, if no toke will be provided or token be corrupted or expired server will return error with status **401**
+Every secure endpoint require token to identify user, if no toke will be provided or token be corrupted or expired server will return error with status 401
+
+if user will send 2 authorization headers like **X-Auth-Token** and **Authorization** server first check X-Auth-Token if it sucseed it will grant access Authorization header won't be considered.
+
+## Oauth 2.0 Authentication (!!!ONLY FOR WEB CLIENT NOW!!!)
+To access through social networks like facebook there is endpoint wich allow you to get redirection url
+
+**[GET] /api/p/systemSettings
+
+response is set of redirect link which you can use for authentication at social network
+
+{
+  "git_userAuthorizationUrl": "https://github.com/login/oauth/authorize?client_id=1234",
+  "vk_userAuthorizationUrl": "https://oauth.vk.com/authorize?client_id=1234",
+  "fb_userAuthorizationUrl": "https://www.facebook.com/v6.0/dialog/oauth?client_id=1234",
+  "ggl_userAuthorizationUrl": "https://accounts.google.com/o/oauth2/v2/auth?client_id=1234",
+  "dis_userAuthorizationUrl": "https://disqus.com/api/oauth/2.0/authorize/?client_id=1234"
+}
+
+When user will enter one of this link he will be redirected to proper social network(vk.com for example) were he need be registered beforehand.After login there he will be redirected to web site with specific **code** in url parameter example: www.ourwebsite.com/sso?provider=vk&code=61095ab603f4fd98b5 using this code client send request to our server at endpoint 
+
+[GET] /api/p/token?code=123&provider=vk
+
+**parameters:**
+
+ **code** - code which social network return to client
+ 
+ **provider** - shortcut of sical network name it can be one of this: git, vk, fb, ggl, dis
+ 
+ **response** will be json with token 
+ 
+{
+ 
+    "access_token" : "123fd545fg5"
+    
+} 
+
+use this token in header to acess secured endpoints, header should be depending what social network do you use Git-Hub-Oauth-Token Vk-Oauth-Token Fb-Oauth-Token Ggl-Oauth-Token Dis-Oauth-Token
 
 ## secured api
-
 
 ## [GET] /api/s/ka
 **stub for checking if token authorization is passed**
