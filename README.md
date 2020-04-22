@@ -96,6 +96,43 @@ use this token in header to acess secured endpoints, header should be depending 
 
 return plain/text **true**
 
+## [GET] /api/s/user
+**get current user information according token**
+
+**required** one of the header **"Authorization X-Auth-Token Git-Hub-Oauth-Token Vk-Oauth-Token Fb-Oauth-Token Ggl-Oauth-Token Dis-Oauth-Token"**
+
+**produce :**
+
+{
+"id": string,
+  
+  "password": "string",
+  
+  "username": string,
+  
+  "login": string,
+  
+  "mail": string,
+  
+  "photo": string,
+  
+  "authorities": [{  
+      "authority": "ROLE_USER", **or ROLE_ADMIN or ROLE_ANONYMOUS;**     
+    }]
+    
+  "password": "", **always empty string**
+  
+  "accountNonExpired": boolean,
+  
+  "accountNonLocked": boolean,
+  
+  "credentialsNonExpired": boolean,
+  
+  "enabled": boolean
+
+}
+
+
 ## public api
 
 
