@@ -60,11 +60,17 @@ To access through social networks like facebook there is endpoint wich allow you
 response is set of redirect link which you can use for authentication at social network
 
 {
+
   "git_userAuthorizationUrl": "https://github.com/login/oauth/authorize?client_id=1234",
+  
   "vk_userAuthorizationUrl": "https://oauth.vk.com/authorize?client_id=1234",
+  
   "fb_userAuthorizationUrl": "https://www.facebook.com/v6.0/dialog/oauth?client_id=1234",
+  
   "ggl_userAuthorizationUrl": "https://accounts.google.com/o/oauth2/v2/auth?client_id=1234",
+  
   "dis_userAuthorizationUrl": "https://disqus.com/api/oauth/2.0/authorize/?client_id=1234"
+  
 }
 
 When user will enter one of this link he will be redirected to proper social network(vk.com for example) were he need be registered beforehand.After login there he will be redirected to web site with specific **code** in url parameter example: www.ourwebsite.com/sso?provider=vk&code=61095ab603f4fd98b5 using this code client send request to our server at endpoint 
