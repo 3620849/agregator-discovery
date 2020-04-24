@@ -197,3 +197,16 @@ return plain/text **true**
   "enabled": boolean
 
 }
+
+## [GET] /api/p/nomination/time
+**this will return time till nomination and timeout in milliseconds when time nomination will be 0 time will stoped and timeout will start сountdown, during this time system will define new prizewinner, after timeout reach 0 time and timeout will be discarded to max value 604800000 ms (1 week) and  600000 ms (10minutes) respectively. Endpoint refresh data every 1000ms**
+
+**produce :**
+
+{
+
+   "time":604800000,
+ 
+   "timeout":600000
+ 
+ }
