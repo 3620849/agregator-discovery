@@ -210,3 +210,88 @@ return plain/text **true**
    "timeout":600000
  
  }
+ 
+ ## [GET] /api/p/post?type="new"&page=1
+ **to get list of post**
+ 
+ **parameters:**
+ 
+type - "new", "top","montly" **required list type**
+          
+page - integer **required page inside list there is 20 elements on each list**
+
+**response:**
+
+{
+
+  "postList": [
+  
+    {
+    
+      "time": long,
+      
+      "responseTime": long,
+      
+      "metaData": null    
+      
+      "summary": null,
+      
+      "userId": null,
+      
+      "userName": string,
+      
+      "userPhoto": string,
+      
+      "clientId": string,
+      
+      "id": string,
+      
+      "header": string,
+      
+      "content": [
+      
+        {
+        
+          "url": string,
+          
+          "text": string,
+          
+          "type": "img" or "text"  or "video",
+          
+          "index": int,
+          
+        }
+        
+      ],
+      
+      "shortContent": null
+      
+    }
+    
+}
+
+## [POST] /api/p/post
+**add new post**
+
+**consumes**
+
+{
+
+ "header": string;
+ 
+ "content": [
+ 
+    {
+    
+     "url": string;
+     
+     "text": string;
+     
+     "type": string "img","text","video";
+     
+     "index": int;
+    }
+  
+  ]
+  
+}
