@@ -211,66 +211,10 @@ return plain/text **true**
  
  }
  
- ## [GET] /api/p/post?type="new"&page=1
+ ## [GET] /api/p/message?type="new"&page=1
  **to get list of post**
  
- **parameters:**
- 
-type - "new", "top","montly" **required list type**
-          
-page - integer **required page inside list there is 20 elements on each list**
-
-**response:**
-
-{
-
-  "postList": [
-  
-    {
-    
-      "time": long,
-      
-      "responseTime": long,
-      
-      "metaData": null    
-      
-      "summary": null,
-      
-      "userId": null,
-      
-      "userName": string,
-      
-      "userPhoto": string,
-      
-      "clientId": string,
-      
-      "id": string,
-      
-      "header": string,
-      
-      "content": [
-      
-        {
-        
-          "url": string,
-          
-          "text": string,
-          
-          "type": "img" or "text"  or "video",
-          
-          "index": int,
-          
-        }
-        
-      ],
-      
-      "shortContent": null
-      
-    }
-    
-}
-
-## [POST] /api/p/post
+## [POST] /api/p/message
 **add new post**
 
 **consumes**
@@ -278,6 +222,10 @@ page - integer **required page inside list there is 20 elements on each list**
 {
 
  "header": string;
+ 
+ "ancestorID": string;
+ 
+ "type": "POST" or "COMMENT"
  
  "content": [
  
