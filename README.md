@@ -15,8 +15,24 @@ Public endpoints contain in path **"p"** and do not require any headers
 **Example:**
 
           [GET] /api/p/user/{userId}
+
+#Anonymous
+
+All client need store clientId in their local memory and send each request as header **Client-Id**
+
+If user has only clientId and no other valid tokens like X-Auth-Token he will be threated as user with role ROLE_ANONYMOUS 
+
+Some endpoint like [GET] /api/s/ka allow access only with roles ROLE_USER and ROLE_ADMIN
+
+If client doesn't send client id and not authorized (have no token) client id will be generated authomaticaly but all actions 
+
+(add post, like, dislike,comment) can be removed from system in any time can be not considering in some calculations
           
-To access secured endpoints client need use headers like ( headers in priority order):
+To access secured endpoints as user with ROLE_USER or ROLE_ADMIN client need use headers like ( headers in priority order):
+
+X-Auth-Token **for token base authorization**
+
+M-Token **for  Oauth 2.0 authorization Google useing Google**
 
 Dis-Oauth-Token **for Oauth 2.0 authorization Disqus**
 
@@ -27,8 +43,6 @@ Fb-Oauth-Token **for Oauth 2.0 authorization Facebook**
 Vk-Oauth-Token **for Oauth 2.0 authorization Vkontakte**
 
 Git-Hub-Oauth-Toke **for Oauth 2.0 authorization GITHUB**
-
-X-Auth-Token **for token base authorization**
 
 Authorization **for token base authorization**
 
@@ -52,12 +66,16 @@ Every secure endpoint require token to identify user, if no toke will be provide
 
 if user will send 2 authorization headers like **X-Auth-Token** and **Authorization** server first check X-Auth-Token if it sucseed it will grant access Authorization header won't be considered.
 
-## Oauth 2.0 Authentication (!!!ONLY FOR WEB CLIENT NOW!!!)
+## Oauth 2.0 Authentication 
 To access through social networks like facebook there is endpoint wich allow you to get redirection url
 
 **[GET] /api/p/systemSettings
 
+
+
 response is set of redirect link which you can use for authentication at social network
+
+property clientId will be generate each time new and it is augurs to define anonymouse users can be userd as their uid.
 
 {
 
@@ -70,6 +88,8 @@ response is set of redirect link which you can use for authentication at social 
   "ggl_userAuthorizationUrl": "https://accounts.google.com/o/oauth2/v2/auth?client_id=1234",
   
   "dis_userAuthorizationUrl": "https://disqus.com/api/oauth/2.0/authorize/?client_id=1234"
+  
+  "clientId": "fgfgf-fgifuig-figufg"
   
 }
 
@@ -211,35 +231,89 @@ return plain/text **true**
  
  }
  
- ## [GET] /api/p/message?type="new"&page=1
+ ## [GET] /api/p/message?type="new"&skip=0
  **to get list of post**
+ 
+ type -parameter string can be "new","top","montly"
+ 
+ skip -parameter long to define how many messages(posts) need to be skiped before to show next list of messages
+ 
+ **produces**
+ 
+ **Content-Type application/json**
+ 
+{
+ 
+"messageList":[
+
+ {"id":string,
+			
+"time":long,
+			
+"responseTime":long, //time when response was send
+			
+"type":"POST" or "COMMENT"
+			
+"ancestorId":null,
+			
+"parentPostId":null, //if it is comment type show to which post it is attached
+			
+"markList":null,
+			
+"summary":{"like":int,"dislike":int,"comment":int,"views":int,"loads":int},
+			
+"userId":string, //author id
+			
+"userName":string, //author
+			
+"userPhoto":string, //author
+						
+"header":string", //not aplicable for comment type
+			
+"content":[{
+
+"url":string,
+					
+"text":string
+					
+"type":string,
+					
+index":int
+
+}]
+				
+"shortContent":[{
+
+"url":string,
+					
+"text":string
+					
+"type":string,
+					
+index":int
+}]
+			
+}]
+
+}	
+ 
+ 
  
 ## [POST] /api/p/message
 **add new post**
-
+**Content-Type application/json**
 **consumes**
 
-{
 
- "header": string;
- 
- "ancestorID": string;
- 
- "type": "POST" or "COMMENT"
- 
- "content": [
- 
-    {
-    
-     "url": string;
-     
-     "text": string;
-     
-     "type": string "img","text","video";
-     
-     "index": int;
-    }
-  
-  ]
-  
+
+{
+   "header":"hello world",
+
+   "content":[
+   
+   {"text":"hello world","type":"text"},
+
+   {"url":"https://developers.google.com/web/tools/chrome-devtools/remote-debugging/imgs/remote-debugging.png","type":"img"}
+
+   ]
 }
