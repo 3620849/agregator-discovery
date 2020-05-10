@@ -69,7 +69,7 @@ if user will send 2 authorization headers like **X-Auth-Token** and **Authorizat
 ## Oauth 2.0 Authentication 
 To access through social networks like facebook there is endpoint wich allow you to get redirection url
 
-**[GET] /api/p/systemSettings
+##[GET] /api/p/systemSettings
 
 
 
