@@ -142,6 +142,21 @@ return plain/text **true**
   
   "photo": string,
   
+  "markList": [
+    
+    {
+        
+	"messageId" : string,
+        
+	"time" : long,
+        
+	"userId" : string, 
+	
+        "value" : byte **like 1 dislike -1**
+     }
+  
+  ]
+  
   "authorities": [{  
       "authority": "ROLE_USER", **or ROLE_ADMIN or ROLE_ANONYMOUS;**     
     }]
