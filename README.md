@@ -317,3 +317,15 @@ index":int
 
    ]
 }
+## [POST] /api/p/upload
+consumes image jpeg/jpg/png/ store it on Amazon S3 storage and return back public url of image
+
+**Content-Type multipart/form-data**
+
+**Produces :
+
+{
+
+   "url": string
+
+}
