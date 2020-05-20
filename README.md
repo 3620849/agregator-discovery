@@ -329,3 +329,13 @@ consumes image jpeg/jpg/png/ store it on Amazon S3 storage and return back publi
    "url": string
 
 }
+
+## [GET] /api/p/likeOrDislike
+like or dislike
+
+**consumes**
+
+messageId - id of post/comment which user want to like/dislike
+
+value - byte 1-like -1 - dislike
+
