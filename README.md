@@ -345,12 +345,25 @@ consumes image jpeg/jpg/png/ store it on Amazon S3 storage and return back publi
 
 }
 
-## [GET] /api/p/likeOrDislike
+## [GET] /api/p/likeOrDislike?messageId="someId"&value=1
 like or dislike
 
-**consumes**
+**consumes parameters**
 
 messageId - id of post/comment which user want to like/dislike
 
 value - byte 1-like -1 - dislike
+
+## [POST] /api/p/message
+
+get info about message
+
+**consumes**
+
+{
+
+	"idsList":["someId"]
+}
+
+**produces same message list as [GET] /api/p/message?type="new"&skip=0**
 
