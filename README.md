@@ -1,5 +1,5 @@
 # Documentation
-SERVER LOCATION Francfurt http://18.156.3.210:8081
+SERVER LOCATION Francfurt https://server.pakdim.com
 ## USER AUTHORIZATION
 
 All endpoinds separated on two types public and secured
@@ -314,7 +314,7 @@ index":int
  
  
  
-## [POST] /api/p/message
+## [PUT] /api/p/message
 **add new post**
 **Content-Type application/json**
 **consumes**
