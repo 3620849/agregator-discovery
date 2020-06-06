@@ -315,11 +315,9 @@ index":int
  
  
 ## [PUT] /api/p/message
-**add new post**
+**add new post or comment**
 **Content-Type application/json**
 **consumes**
-
-
 
 {
    "header":"hello world",
@@ -332,6 +330,14 @@ index":int
 
    ]
 }
+
+**to add message as comment you need specify ancestorId if we commenting post ancestorId == parentPostId if we commenting another comment ancestorId == id of that comment**
+{"parentPostId":"5ed021b21bcc2e2fc35c999e",
+
+"ancestorId":"5ed022101bcc2e2fc35c999f",
+
+"content":[{"text":string,"type":"text"}]}
+
 ## [POST] /api/p/upload
 consumes image jpeg/jpg/png/ store it on Amazon S3 storage and return back public url of image
 
@@ -366,4 +372,43 @@ get info about message
 }
 
 **produces same message list as [GET] /api/p/message?type="new"&skip=0**
+
+## [GET] /api/comment/{id}
+
+get comment list off particular post
+
+**consulems**
+
+id - string path variable
+
+{"messageList": [
+
+{"id": string,
+
+"time":long,
+
+"responseTime":long,
+
+"type":"COMMENT",
+
+"ancestorId":"5ed021b21bcc2e2fc35c999e",
+
+"parentPostId":"5ed021b21bcc2e2fc35c999e",
+
+"markList":null,
+
+"summary":{"like":0,"dislike":0,"comment":0,"views":0,"loads":0},
+
+"userId":"string",
+
+"userName":string,
+
+"userPhoto":string 
+
+"content":[{ "text":string,"type":"text"}],
+
+,"comments":[] -**subcoments**
+
+}]} 
+
 
