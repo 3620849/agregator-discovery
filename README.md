@@ -373,7 +373,7 @@ get info about message
 
 **produces same message list as [GET] /api/p/message?type="new"&skip=0**
 
-## [GET] /api/comment/{id}
+## [GET] /api/p/comment/{id}
 
 get comment list off particular post
 
