@@ -375,11 +375,13 @@ get info about message
 
 ## [GET] /api/p/comment/{id}
 
-get comment list off particular post
+get comment list off particular post where id is id of post
 
-**consulems**
+**consume**
 
 id - string path variable
+
+**produce json**
 
 {"messageList": [
 
