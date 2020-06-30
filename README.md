@@ -253,7 +253,7 @@ return plain/text **true**
  
  skip -parameter long to define how many messages(posts) need to be skiped before to show next list of messages
  
- **produces**
+ **produces:**
  
  **Content-Type application/json**
  
@@ -317,7 +317,7 @@ index":int
 ## [PUT] /api/p/message
 **add new post or comment**
 **Content-Type application/json**
-**consumes**
+**consumes:**
 
 {
    "header":"hello world",
@@ -364,7 +364,7 @@ value - byte 1-like -1 - dislike
 
 get info about message
 
-**consumes**
+**consumes:**
 
 {
 
@@ -413,4 +413,9 @@ id - string path variable
 
 }]} 
 
+## [DELETE] /api/s/message/{messageId}
+**remove message for authorized usesers 24hours , anonymouse 2minutes, admin internal**
 
+**consumes:**
+
+messageId - string path variable
