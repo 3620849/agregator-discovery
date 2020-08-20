@@ -262,7 +262,9 @@ return plain/text **true**
 "messageList":[
 
  {"id":string,
-			
+ 
+clientId:string,
+
 "time":long,
 			
 "responseTime":long, //time when response was send
@@ -386,6 +388,8 @@ id - string path variable
 {"messageList": [
 
 {"id": string,
+ 
+clientId:string,
 
 "time":long,
 
