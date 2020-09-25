@@ -1,14 +1,14 @@
 # Structure
 
-https://github.com/3620849/agregator-auth - main endpoint
-
 https://github.com/3620849/agregator-discovery - discovery server
 
-https://github.com/3620849/agregator-gui - web gui (Angular)
+https://github.com/3620849/agregator-auth - endpoint microservice
 
 https://github.com/3620849/agregator-data-server - data microservice
 
 https://github.com/3620849/file-storage - image storage microservice
+
+https://github.com/3620849/agregator-gui - web gui (Angular)
 
 
 # Documentation
