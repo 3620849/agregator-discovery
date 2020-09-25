@@ -10,6 +10,8 @@ https://github.com/3620849/file-storage - image storage microservice
 
 https://github.com/3620849/agregator-gui - web gui (Angular)
 
+https://github.com/Alekssandr/Degradator - android gui
+
 
 # Documentation
 SERVER LOCATION Francfurt https://server.pakdim.com
