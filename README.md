@@ -344,6 +344,8 @@ index":int
    {"text":"hello world","type":"text"},
 
    {"url":"https://developers.google.com/web/tools/chrome-devtools/remote-debugging/imgs/remote-debugging.png","type":"img"}
+   
+   {"url": "https://dg-1987.s3.eu-central-1.amazonaws.com/img/6fdf4362-0afc-434e-8f97-cae83feaa97d.mp4", type: "video"}
 
    ]
 }
