@@ -440,3 +440,14 @@ clientId:string,
 **consumes:**
 
 messageId - string path variable
+
+
+## [GET] /api/s/message/{messageId}/report/{reason}
+**report on message
+**consumes:**
+
+messageId - string path variable
+
+reason is enum : R_CIVIL,    R_INJURES,    R_CRASHES,    R_PROGRESS,    R_COMP,    R_POLITIC,    R_SCRN,    R_ELABORATE,    H_ME,    H_ELSE,    V_ME,
+    V_ELSE,    HATE,    SEXUAL,    P_ME,    P_ELSE,    PORN_ME,    PORN_ELSE,    TRANSACTION,    IMP_ME,    IMP_ELSE,    COPY_ME,    COPY_ELSE,
+    T_ME,    T_ELSE,SPAM_LINK,    SPAM_MSG,    SPAM_EX_POST,    SPAM_MAL,    SPAM_OTHER,    SPAM_HARM,    MISI
